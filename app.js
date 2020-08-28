@@ -10,6 +10,16 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const team = [];
+
+function employeeInformation() {
+    inquirer.prompt([
+     {
+       type: "list",
+       message: "What type of employee would you like to input",
+       name: "name",
+       choices: ["Manager", "Engineer", "Intern", "Show Summary"],
+     },
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -33,3 +43,12 @@ const render = require("./lib/htmlRenderer");
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+
+function generateHTML(fileName, data) {
+    fs.writeFile(fileName, data, "utf8", function (err) {
+      if (err) {
+        throw err;
+      }
+      console.log("You have successfully written your Employee Summary");
+    });
+  };
